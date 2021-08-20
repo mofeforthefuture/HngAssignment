@@ -1,11 +1,16 @@
-import React, { useState } from 'react'
-import { View, Text, SafeAreaView, Image } from 'react-native';
+import React, { useState, Alert } from 'react'
+import { View, Text, SafeAreaView, Image, Linking, TouchableOpacity } from 'react-native';
 import AppTextInput from './Components/customComponents/AppTextInput';
 import { COLORS, } from './Components/constants/themes';
 
 import Zuri from './assets/zuri.png'
 import I4g from './assets/I4G-Logo-Color-Cropped.png'
 import Brand from './assets/brand-logo.png'
+
+
+const Hng = "https://hng.tech";
+const ingressive = "https://ingressive.org"
+const ZuriLink = "https://internship.zuri.team/"
 
 
 
@@ -20,7 +25,8 @@ function App() {
             width: '100%',
             height: 50,
             backgroundColor: COLORS.black,
-            alignItems: 'center'
+            alignItems: 'center',
+            justifyContent: 'center',
           }}>
           <Text style={{
             fontSize: 20,
@@ -29,18 +35,22 @@ function App() {
 
           }}>HNGI8 Stage 2 Task</Text>
         </View>
-        <View style={{ alignItems: 'center' }}>
-          <Image source={Zuri} />
-          <Image source={I4g} style={{ width: '90%', height: 80 }} />
-          <Image source={Brand} style={{ width: '100%', height: 80, paddingBottom: 20 }} />
+        <View style={{ alignItems: 'center', height: '50%', backgroundColor: COLORS.white }}>
+          <TouchableOpacity style={{ width: '80%', marginTop: 30 }} onPress={() => Linking.openURL(Hng)}>
+            <Image source={Brand} style={{ width: '100%', height: 80, paddingBottom: 20, marginBottom: 20, resizeMode: 'stretch' }} />
+          </TouchableOpacity >
+          <TouchableOpacity style={{ width: '80%' }} onPress={() => Linking.openURL(ingressive)}>
+            <Image source={I4g} style={{ width: '90%', height: 80, marginBottom: 20, resizeMode: 'stretch' }} />
+          </TouchableOpacity>
+          <TouchableOpacity onPress={() => Linking.openURL(ZuriLink)}>
+            <Image source={Zuri} style={{ marginTop: 20, marginBottom: 20, }} />
+          </TouchableOpacity>
 
         </View>
-        <View>
-          <Text>Go to <Text style={{ color: COLORS.blue, textDecorationLine: 'underline' }}>https://hng.tech</Text> to join the next internship</Text>
-        </View>
+
         <View style={{
-          width: '100%',
           height: '70%',
+          borderRadius: 30,
           backgroundColor: COLORS.black,
           alignItems: 'center',
           paddingTop: 40
