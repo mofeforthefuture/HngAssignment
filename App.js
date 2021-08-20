@@ -1,112 +1,66 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- * @flow strict-local
- */
+import React, { useState } from 'react'
+import { View, Text, SafeAreaView, Image } from 'react-native';
+import AppTextInput from './Components/customComponents/AppTextInput';
+import { COLORS, } from './Components/constants/themes';
 
-import React from 'react';
-import type {Node} from 'react';
-import {
-  SafeAreaView,
-  ScrollView,
-  StatusBar,
-  StyleSheet,
-  Text,
-  useColorScheme,
-  View,
-} from 'react-native';
+import Zuri from './assets/zuri.png'
+import I4g from './assets/I4G-Logo-Color-Cropped.png'
+import Brand from './assets/brand-logo.png'
 
-import {
-  Colors,
-  DebugInstructions,
-  Header,
-  LearnMoreLinks,
-  ReloadInstructions,
-} from 'react-native/Libraries/NewAppScreen';
 
-const Section = ({children, title}): Node => {
-  const isDarkMode = useColorScheme() === 'dark';
+
+function App() {
+  const [text, setText] = useState('')
   return (
-    <View style={styles.sectionContainer}>
-      <Text
-        style={[
-          styles.sectionTitle,
-          {
-            color: isDarkMode ? Colors.white : Colors.black,
-          },
-        ]}>
-        {title}
-      </Text>
-      <Text
-        style={[
-          styles.sectionDescription,
-          {
-            color: isDarkMode ? Colors.light : Colors.dark,
-          },
-        ]}>
-        {children}
-      </Text>
-    </View>
-  );
-};
-
-const App: () => Node = () => {
-  const isDarkMode = useColorScheme() === 'dark';
-
-  const backgroundStyle = {
-    backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
-  };
-
-  return (
-    <SafeAreaView style={backgroundStyle}>
-      <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
-      <ScrollView
-        contentInsetAdjustmentBehavior="automatic"
-        style={backgroundStyle}>
-        <Header />
+    <>
+      <SafeAreaView style={{ backgroundColor: COLORS.black, }}></SafeAreaView>
+      <View>
         <View
           style={{
-            backgroundColor: isDarkMode ? Colors.black : Colors.white,
+            width: '100%',
+            height: 50,
+            backgroundColor: COLORS.black,
+            alignItems: 'center'
           }}>
-          <Section title="Step One">
-            Edit <Text style={styles.highlight}>App.js</Text> to change this
-            screen and then come back to see your edits.
-          </Section>
-          <Section title="See Your Changes">
-            <ReloadInstructions />
-          </Section>
-          <Section title="Debug">
-            <DebugInstructions />
-          </Section>
-          <Section title="Learn More">
-            Read the docs to discover what to do next:
-          </Section>
-          <LearnMoreLinks />
-        </View>
-      </ScrollView>
-    </SafeAreaView>
-  );
-};
+          <Text style={{
+            fontSize: 20,
+            fontWeight: '500',
+            color: COLORS.white,
 
-const styles = StyleSheet.create({
-  sectionContainer: {
-    marginTop: 32,
-    paddingHorizontal: 24,
-  },
-  sectionTitle: {
-    fontSize: 24,
-    fontWeight: '600',
-  },
-  sectionDescription: {
-    marginTop: 8,
-    fontSize: 18,
-    fontWeight: '400',
-  },
-  highlight: {
-    fontWeight: '700',
-  },
-});
+          }}>HNGI8 Stage 2 Task</Text>
+        </View>
+        <View style={{ alignItems: 'center' }}>
+          <Image source={Zuri} />
+          <Image source={I4g} style={{ width: '90%', height: 80 }} />
+          <Image source={Brand} style={{ width: '100%', height: 80, paddingBottom: 20 }} />
+
+        </View>
+        <View>
+          <Text>Go to <Text style={{ color: COLORS.blue, textDecorationLine: 'underline' }}>https://hng.tech</Text> to join the next internship</Text>
+        </View>
+        <View style={{
+          width: '100%',
+          height: '70%',
+          backgroundColor: COLORS.black,
+          alignItems: 'center',
+          paddingTop: 40
+        }}>
+          <Text style={{
+            fontSize: 20,
+            fontWeight: '500',
+            color: COLORS.white,
+
+          }}>{text}</Text>
+
+          <AppTextInput
+            placeholder={'Type here to see something cool'}
+            onChangeText={value => setText(value)}
+          />
+        </View>
+      </View>
+    </>
+  )
+}
+
 
 export default App;
